@@ -4,23 +4,29 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#000",
-    padding: 24,
   },
   eventName: {
     color: "#fff",
     fontSize: 24,
     fontWeight: "bold",
     marginTop: 48,
+    marginLeft: 24,
   },
   eventDate: {
-    color: "#fff",
     fontSize: 16,
+    marginLeft: 24,
+    color: "#959595",
   },
   form: {
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
-    marginVertical: 48,
+    padding: 24,
+  },
+  participantsList: {
+    flex: 1,
+    width: "100%",
+    paddingHorizontal: 24,
   },
   input: {
     flex: 1,

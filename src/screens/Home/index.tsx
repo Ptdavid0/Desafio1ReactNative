@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import {
   TouchableOpacity,
@@ -6,8 +5,10 @@ import {
   View,
   TextInput,
   FlatList,
+  Alert,
 } from "react-native";
 import Participant from "../../components/Participant";
+import { Keyboard } from "react-native";
 import { styles } from "./styles";
 
 interface Participant {
@@ -28,11 +29,30 @@ const Home: React.FC = () => {
       },
     ]);
     setParticipantName("");
+    // This line is the key to dismiss the keyboard
+    Keyboard.dismiss();
   };
 
-  const handleParticipantRemove = (id: number) => {
+  const removeParticipant = (id: number) => {
     setParticipants(
       participants.filter((participant) => participant.id !== id)
+    );
+  };
+
+  const handleParticipantRemove = (id: number, name: string) => {
+    Alert.alert(
+      "Remover participante",
+      `Tem certeza que deseja remover ${name} ?`,
+      [
+        {
+          text: "Não",
+          style: "cancel",
+        },
+        {
+          text: "Sim",
+          onPress: () => removeParticipant(id),
+        },
+      ]
     );
   };
 
@@ -40,7 +60,6 @@ const Home: React.FC = () => {
     <View style={styles.container}>
       <Text style={styles.eventName}>Nome do Evento</Text>
       <Text style={styles.eventDate}>Sexta, 4 de Novembro de 2022</Text>
-      <StatusBar style="auto" />
       <View style={styles.form}>
         <TextInput
           style={styles.input}
@@ -58,12 +77,13 @@ const Home: React.FC = () => {
         </TouchableOpacity>
       </View>
       <FlatList
+        style={styles.participantsList}
         data={participants}
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
           <Participant
             name={item.name}
-            remove={() => handleParticipantRemove(item.id)}
+            remove={() => handleParticipantRemove(item.id, item.name)}
           />
         )}
       />
