@@ -24,10 +24,23 @@ export const styles = StyleSheet.create({
     color: "#236f9f",
     fontSize: 16,
     fontWeight: "bold",
+    marginRight: 8,
   },
   infoTextFinished: {
     color: "#5e60ce",
     fontSize: 16,
+    fontWeight: "bold",
+  },
+  infoViewQuantity: {
+    backgroundColor: "#333333",
+    borderRadius: 8,
+    paddingHorizontal: 6,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  infoTextQuantity: {
+    color: "#fff",
+    fontSize: 14,
     fontWeight: "bold",
   },
   participantsList: {

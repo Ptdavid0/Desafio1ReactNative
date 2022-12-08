@@ -82,8 +82,19 @@ const Home: React.FC = () => {
         handleTaskAdd={handleTaskAdd}
       />
       <View style={styles.infoContainer}>
-        <Text style={styles.infoTextCreated}>Criadas {tasks.length}</Text>
-        <Text style={styles.infoTextFinished}>Concluidas {tasksConcluded}</Text>
+        <Text style={styles.infoTextCreated}>
+          Criadas{" "}
+          <View style={styles.infoViewQuantity}>
+            <Text style={styles.infoTextQuantity}>{tasks.length}</Text>
+          </View>
+        </Text>
+
+        <Text style={styles.infoTextFinished}>
+          Concluidas{" "}
+          <View style={styles.infoViewQuantity}>
+            <Text style={styles.infoTextQuantity}>{tasksConcluded}</Text>
+          </View>
+        </Text>
       </View>
 
       {tasks.length === 0 ? (
