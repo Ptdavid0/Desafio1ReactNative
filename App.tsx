@@ -1,11 +1,11 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "react-native";
 import Home from "./src/screens/Home";
 
 const App: React.FC = () => {
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar barStyle="light-content" backgroundColor="#000" />
       <Home />
     </>
   );

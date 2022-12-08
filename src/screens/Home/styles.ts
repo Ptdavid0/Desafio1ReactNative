@@ -9,24 +9,30 @@ export const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 24,
     fontWeight: "bold",
-    marginTop: 48,
-    marginLeft: 24,
+    marginTop: 76,
+    marginLeft: 36,
   },
   eventDate: {
     fontSize: 16,
-    marginLeft: 24,
+    marginLeft: 36,
     color: "#959595",
   },
   form: {
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
-    padding: 24,
+    padding: 36,
+  },
+  line: {
+    height: 1,
+    backgroundColor: "#1F1E25",
+    width: "100%",
+    marginBottom: 24,
   },
   participantsList: {
     flex: 1,
     width: "100%",
-    paddingHorizontal: 24,
+    paddingHorizontal: 36,
   },
   input: {
     flex: 1,
@@ -51,5 +57,10 @@ export const styles = StyleSheet.create({
     color: "#000",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  noParticipantText: {
+    color: "#9C98A6",
+    fontSize: 16,
+    margin: 20,
   },
 });

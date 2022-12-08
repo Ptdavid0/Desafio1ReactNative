@@ -21,8 +21,8 @@ const Home: React.FC = () => {
   const [participantName, setParticipantName] = useState("");
 
   const handlePartipantAdd = () => {
-    setParticipants([
-      ...participants,
+    setParticipants((prevState) => [
+      ...prevState,
       {
         id: Math.random(),
         name: participantName,
@@ -66,7 +66,7 @@ const Home: React.FC = () => {
           placeholder="Nome do Participante"
           placeholderTextColor="#9C98A6"
           value={participantName}
-          onChangeText={(text) => setParticipantName(text)}
+          onChangeText={setParticipantName}
         />
         <TouchableOpacity
           style={styles.button}
@@ -76,17 +76,24 @@ const Home: React.FC = () => {
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
-      <FlatList
-        style={styles.participantsList}
-        data={participants}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => (
-          <Participant
-            name={item.name}
-            remove={() => handleParticipantRemove(item.id, item.name)}
-          />
-        )}
-      />
+      <View style={styles.line} />
+      {participants.length === 0 ? (
+        <Text style={styles.noParticipantText}>
+          Nenhum participante esta presente ate o momento
+        </Text>
+      ) : (
+        <FlatList
+          style={styles.participantsList}
+          data={participants}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => (
+            <Participant
+              name={item.name}
+              remove={() => handleParticipantRemove(item.id, item.name)}
+            />
+          )}
+        />
+      )}
     </View>
   );
 };
