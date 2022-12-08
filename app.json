@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "imHere",
-    "slug": "imHere",
+    "name": "toDo",
+    "slug": "toDo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0D0D0D"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

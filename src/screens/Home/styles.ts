@@ -3,31 +3,41 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000",
+    backgroundColor: "#0d0d0d",
   },
-  eventName: {
-    color: "#fff",
-    fontSize: 24,
-    fontWeight: "bold",
-    marginTop: 76,
-    marginLeft: 36,
+  header: {
+    alignItems: "center",
   },
-  eventDate: {
-    fontSize: 16,
-    marginLeft: 36,
-    color: "#959595",
+  headerImage: {
+    resizeMode: "contain",
+    width: 150,
+    height: 150,
   },
   form: {
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
+    paddingTop: 0,
     padding: 36,
   },
-  line: {
-    height: 1,
-    backgroundColor: "#1F1E25",
-    width: "100%",
-    marginBottom: 24,
+  infoContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginHorizontal: 36,
+    borderBottomColor: "#333333",
+    borderBottomWidth: 0.5,
+    paddingBottom: 20,
+  },
+  infoTextCreated: {
+    color: "#236f9f",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  infoTextFinished: {
+    color: "#5e60ce",
+    fontSize: 16,
+    fontWeight: "bold",
   },
   participantsList: {
     flex: 1,
@@ -36,7 +46,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    backgroundColor: "#1F1E25",
+    backgroundColor: "#262626",
     borderRadius: 8,
     height: 56,
     paddingHorizontal: 24,
@@ -45,7 +55,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: "#84e51c",
+    backgroundColor: "#236f9f",
     borderRadius: 8,
     height: 56,
     width: 56,
@@ -54,13 +64,29 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: {
-    color: "#000",
+    color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
   },
-  noParticipantText: {
-    color: "#9C98A6",
+  noTaskContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 48,
+  },
+  noTaskUpperText: {
+    color: "#656565",
     fontSize: 16,
-    margin: 20,
+    fontWeight: "bold",
+  },
+  noTaskLowerText: {
+    color: "#656565",
+    fontSize: 17,
+  },
+  noTaskImage: {
+    resizeMode: "contain",
+    width: 60,
+    height: 60,
+    opacity: 0.4,
+    marginBottom: 16,
   },
 });

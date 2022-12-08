@@ -5,38 +5,49 @@ import {
   View,
   TextInput,
   FlatList,
+  Image,
   Alert,
+  SafeAreaView,
 } from "react-native";
-import Participant from "../../components/Participant";
+import Participant from "../../components/Task";
 import { Keyboard } from "react-native";
 import { styles } from "./styles";
+import logoImg from "../../../assets/logo.png";
+import iconTask from "../../../assets/iconTask.png";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface Participant {
   id: number;
   name: string;
 }
 
-const Home: React.FC = () => {
-  const [participants, setParticipants] = useState<Participant[]>([]);
-  const [participantName, setParticipantName] = useState("");
+interface Task {
+  id: number;
+  name: string;
+  concluded: boolean;
+}
 
-  const handlePartipantAdd = () => {
-    setParticipants((prevState) => [
+const Home: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [taskDescription, setTaskDescription] = useState("");
+  const [tasksConcluded, setTasksConcluded] = useState(0);
+
+  const handleTaskAdd = () => {
+    setTasks((prevState) => [
       ...prevState,
       {
         id: Math.random(),
-        name: participantName,
+        name: taskDescription,
+        concluded: false,
       },
     ]);
-    setParticipantName("");
+    setTaskDescription("");
     // This line is the key to dismiss the keyboard
     Keyboard.dismiss();
   };
 
-  const removeParticipant = (id: number) => {
-    setParticipants(
-      participants.filter((participant) => participant.id !== id)
-    );
+  const removeTask = (id: number) => {
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   const handleParticipantRemove = (id: number, name: string) => {
@@ -50,41 +61,61 @@ const Home: React.FC = () => {
         },
         {
           text: "Sim",
-          onPress: () => removeParticipant(id),
+          onPress: () => removeTask(id),
         },
       ]
     );
   };
 
+  const InfoContainer = (
+    <View style={styles.infoContainer}>
+      <Text style={styles.infoTextCreated}>Criadas {tasks.length}</Text>
+      <Text style={styles.infoTextFinished}>Concluidas {tasks.length}</Text>
+    </View>
+  );
+
+  const FormContainer = (
+    <View style={styles.form}>
+      <TextInput
+        style={styles.input}
+        placeholder="Adicione uma nova tarefa"
+        placeholderTextColor="#9C98A6"
+        value={taskDescription}
+        onChangeText={setTaskDescription}
+      />
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.7}
+        onPress={() => handleTaskAdd()}
+      >
+        <Text style={styles.buttonText}>+</Text>
+      </TouchableOpacity>
+    </View>
+  );
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.eventName}>Nome do Evento</Text>
-      <Text style={styles.eventDate}>Sexta, 4 de Novembro de 2022</Text>
-      <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder="Nome do Participante"
-          placeholderTextColor="#9C98A6"
-          value={participantName}
-          onChangeText={setParticipantName}
-        />
-        <TouchableOpacity
-          style={styles.button}
-          activeOpacity={0.7}
-          onPress={() => handlePartipantAdd()}
-        >
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Image source={logoImg} style={styles.headerImage} />
       </View>
-      <View style={styles.line} />
-      {participants.length === 0 ? (
-        <Text style={styles.noParticipantText}>
-          Nenhum participante esta presente ate o momento
-        </Text>
+
+      {FormContainer}
+      {InfoContainer}
+
+      {tasks.length === 0 ? (
+        <View style={styles.noTaskContainer}>
+          <Image source={iconTask} style={styles.noTaskImage} />
+          <Text style={styles.noTaskUpperText}>
+            Você ainda não tem tarefas cadastradas
+          </Text>
+          <Text style={styles.noTaskLowerText}>
+            Crie tarefas e organize seus itens a fazer
+          </Text>
+        </View>
       ) : (
         <FlatList
           style={styles.participantsList}
-          data={participants}
+          data={tasks}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
             <Participant
@@ -94,7 +125,7 @@ const Home: React.FC = () => {
           )}
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
