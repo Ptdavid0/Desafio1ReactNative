@@ -20,27 +20,25 @@ export const styles = StyleSheet.create({
     marginHorizontal: 36,
     paddingBottom: 48,
   },
+  infoSubContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   infoTextCreated: {
     color: "#236f9f",
+    marginRight: 8,
     fontSize: 16,
     fontWeight: "bold",
-    marginRight: 8,
   },
   infoTextFinished: {
+    marginRight: 8,
     color: "#5e60ce",
     fontSize: 16,
     fontWeight: "bold",
   },
-  infoViewQuantity: {
-    backgroundColor: "#333333",
-    borderRadius: 8,
-    paddingHorizontal: 6,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  infoTextQuantity: {
+  infoText: {
     color: "#fff",
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "bold",
   },
   participantsList: {
