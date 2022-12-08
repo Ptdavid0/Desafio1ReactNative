@@ -1,6 +1,6 @@
 import React from "react";
-import { TextInput, TouchableOpacity, View, Text } from "react-native";
-
+import { TextInput, TouchableOpacity, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
 
 interface FormProps {
@@ -28,7 +28,7 @@ const Form: React.FC<FormProps> = ({
         activeOpacity={0.7}
         onPress={() => handleTaskAdd()}
       >
-        <Text style={styles.buttonText}>+</Text>
+        <Ionicons name="add-circle-outline" size={24} color="white" />
       </TouchableOpacity>
     </View>
   );

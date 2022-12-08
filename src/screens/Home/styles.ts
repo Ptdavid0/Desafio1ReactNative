@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
-  participantsList: {
+  tasksList: {
     flex: 1,
     width: "100%",
     paddingHorizontal: 36,

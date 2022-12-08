@@ -88,7 +88,7 @@ const Home: React.FC = () => {
         </View>
 
         <View style={styles.infoSubContainer}>
-          <Text style={styles.infoTextFinished}>Concluidas</Text>
+          <Text style={styles.infoTextFinished}>Concluídas</Text>
           <Text style={styles.infoText}>{tasksConcluded}</Text>
         </View>
       </View>
@@ -97,7 +97,7 @@ const Home: React.FC = () => {
         <EmptyState />
       ) : (
         <FlatList
-          style={styles.participantsList}
+          style={styles.tasksList}
           data={tasks}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
